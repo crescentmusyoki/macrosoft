@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content_accounts %}
+
+    <form method="post" action="{% url 'login-view' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Log in</button>
+        </div>
+    </form>
+
+    <div class="form-group">
+        Not a member? <a href="{% url 'register-view' %}">Register</a>
+    </div>
+
+{% endblock %}
