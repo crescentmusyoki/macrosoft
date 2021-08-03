@@ -106,5 +106,5 @@ Jenkinsfile
 # soft_delete.py
 start.sh
 entrypoint.sh
-
-calculator/migrations
+#
+#calculator/migrations/*
