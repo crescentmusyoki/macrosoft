@@ -71,13 +71,15 @@ class RegisterView(View):
             try:
                 with transaction.atomic():
                     auth_user = form.save()
-                    auth_user.set_password(form.cleaned_data['password'])
+                    auth_user.first_name = form.cleaned_data['first_name']
+                    auth_user.last_name = form.cleaned_data['last_name']
+                    auth_user.set_password(form.cleaned_data['password2'])
                     auth_user.save()
 
                     # auth user for now
                     authed_user = authenticate(request,
                                                username=form.cleaned_data['username'],
-                                               password=form.cleaned_data['password'])
+                                               password=form.cleaned_data['password2'])
                     if authed_user is not None:
                         login(request, authed_user)
 
